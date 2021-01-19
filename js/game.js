@@ -35,10 +35,10 @@ function gameLoop(){
     ctx.fillStyle = 'black';
     ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    debug.innerHTML = "Gyro x : " + gyroValue.z;
+    debug.innerHTML = "Gyro x : " + gyroValue.y;
     
     ctx.fillStyle = 'green';
-    ctx.fillRect(character.x + gyroValue.z * 10, character.y, character.xSize, character.ySize);
+    ctx.fillRect(character.x= + gyroValue.y * 10, character.y, character.xSize, character.ySize);
 }
 
 setInterval(gameLoop, 1000/60)
