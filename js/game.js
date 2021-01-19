@@ -26,7 +26,7 @@ function gameLoop(){
     let charPosX = character.x - gyroscope.x/5 * character.xSpeed;
 
     ctx.fillStyle = 'green';
-    ctx.fillRect(gyroscope.x * 10, character.y, character.xSize, character.ySize);
+    ctx.fillRect(character.x + gyroscope.x * 10, character.y, character.xSize, character.ySize);
 }
 
 setInterval(gameLoop, 1000/60)
