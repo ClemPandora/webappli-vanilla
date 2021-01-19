@@ -9,8 +9,8 @@ let character = {
     ySize : 50,
     x : 0,
     y : 0,
-    xSpeed : 2,
-    ySpeed : 2
+    xSpeed : 10,
+    ySpeed : 10
 }
 
 character.x = (canvas.width - character.xSize)/2;
