@@ -1,32 +1,32 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-let x = 0;
-let y = 0;
-let moveX = 2;
-let moveY = 2;
+canvas.width = document.documentElement.clientWidth || document.body.clientWidth;
+canvas.height = document.documentElement.clientHeight || document.body.clientHeight;
 
-const cubeSizeX = 100;
-const cubeSizeY = 100;
+let character = {
+    xSize : 50,
+    ySize : 50,
+    x : 0,
+    y : 0,
+    xSpeed : 2,
+    ySpeed : 2
+}
 
-var img = new Image();
-img.src = 'img/DVD_video_logo.png';
+character.x = (canvas.width - character.xSize)/2;
+character.y = canvas.height - character.ySize - 10;
+
+let gyroscope = new Gyroscope({frequency: 60});
+gyroscope.start();
 
 function gameLoop(){
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'black';
     ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    ctx.drawImage(img, x, y, cubeSizeX, cubeSizeY);
-    
-    if(x+cubeSizeX+moveX >= canvas.width || x+moveX <= 0){
-        moveX *= -1;
-    }
-    if(y+cubeSizeY+moveY >= canvas.height || y+moveY <= 0){
-        moveY *= -1;
-    }
-    x+=moveX;
-    y+=moveY;
+    let charPosX = character.x - gyroscope.x/5 * character.xSpeed;
+
+    ctx.fillStyle = 'green';
+    ctx.fillRect(charPosX, character.y, character.xSize, character.ySize);
 }
-img.onload = function() {
-    setInterval(gameLoop, 1000/60)
-}
+
+setInterval(gameLoop, 1000/60)
