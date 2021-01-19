@@ -19,12 +19,14 @@ character.y = canvas.height - character.ySize - 10;
 let gyroscope = new Gyroscope({frequency: 60});
 gyroscope.start();
 
+const debug = document.getElementById("debug");
+
 function gameLoop(){
     ctx.fillStyle = 'black';
     ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    let charPosX = character.x - gyroscope.x/5 * character.xSpeed;
-
+    debug.innerHTML = "Gyro x : " + gyroscope.x;
+    
     ctx.fillStyle = 'green';
     ctx.fillRect(character.x + gyroscope.x * 10, character.y, character.xSize, character.ySize);
 }
