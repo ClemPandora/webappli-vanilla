@@ -10,7 +10,8 @@ let character = {
     x : 0,
     y : 0,
     xSpeed : 10,
-    ySpeed : 10
+    ySpeed : 10,
+    maxSpeed : 5
 }
 
 character.x = (canvas.width - character.xSize)/2;
@@ -35,10 +36,17 @@ function gameLoop(){
     ctx.fillStyle = 'black';
     ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    debug.innerHTML = "Gyro x : " + gyroValue.y;
+    let toMoveX = 0;
+    if(gyroValue > 0){
+        toMoveX = Math.min(character.maxSpeed, gyroValue.y/2);
+    }
+    if(gyroValue < 0){
+        toMoveX = Math.max(-character.maxSpeed, gyroValue.y/2);
+    }
+    character.x += toMoveX;
     
     ctx.fillStyle = 'green';
-    ctx.fillRect(character.x= + gyroValue.y * 10, character.y, character.xSize, character.ySize);
+    ctx.fillRect(character.x, character.y, character.xSize, character.ySize);
 }
 
 setInterval(gameLoop, 1000/60)
