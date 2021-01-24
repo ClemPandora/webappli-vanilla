@@ -166,8 +166,8 @@ function handleTouchMove(evt) {
     var yDiff = yDown - yUp;
 
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
-        rotateY=-xDiff/8000;
+        rotateY=-xDiff/1000;
     } else {
-        rotateX=-yDiff/8000;
+        rotateX=-yDiff/1000;
     }
 };
