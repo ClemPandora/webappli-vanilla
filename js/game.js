@@ -87,6 +87,14 @@ class Face {
         ctx.fill();
         ctx.fillStyle = "black";
         ctx.lineWidth = 3;
+        ctx.moveTo(this.vertex1.xProjected + (this.vertex2.xProjected - this.vertex1.xProjected)/3, this.vertex1.yProjected + (this.vertex2.yProjected - this.vertex1.yProjected)/3);
+        ctx.lineTo(this.vertex4.xProjected + (this.vertex3.xProjected - this.vertex4.xProjected)/3, this.vertex4.yProjected + (this.vertex3.yProjected - this.vertex4.yProjected)/3);
+        ctx.moveTo(this.vertex1.xProjected + (this.vertex2.xProjected - this.vertex1.xProjected)*2/3, this.vertex1.yProjected + (this.vertex2.yProjected - this.vertex1.yProjected)*2/3);
+        ctx.lineTo(this.vertex4.xProjected + (this.vertex3.xProjected - this.vertex4.xProjected)*2/3, this.vertex4.yProjected + (this.vertex3.yProjected - this.vertex4.yProjected)*2/3);
+        ctx.moveTo(this.vertex1.xProjected + (this.vertex4.xProjected - this.vertex1.xProjected)/3, this.vertex1.yProjected + (this.vertex4.yProjected - this.vertex1.yProjected)/3);
+        ctx.lineTo(this.vertex2.xProjected + (this.vertex3.xProjected - this.vertex2.xProjected)/3, this.vertex2.yProjected + (this.vertex3.yProjected - this.vertex2.yProjected)/3);
+        ctx.moveTo(this.vertex1.xProjected + (this.vertex4.xProjected - this.vertex1.xProjected)*2/3, this.vertex1.yProjected + (this.vertex4.yProjected - this.vertex1.yProjected)*2/3);
+        ctx.lineTo(this.vertex2.xProjected + (this.vertex3.xProjected - this.vertex2.xProjected)*2/3, this.vertex2.yProjected + (this.vertex3.yProjected - this.vertex2.yProjected)*2/3);
         ctx.stroke();
     }
 }
